@@ -26,7 +26,7 @@ trait RestApi extends HttpService { actor: Actor =>
 
     path("events") {
       get { requestContext =>
-        context.actorOf(Props[Ress]).ask(GetEvents)
+        context.actorOf(Props[Resu]).ask(GetEvents)
       }
     }
 

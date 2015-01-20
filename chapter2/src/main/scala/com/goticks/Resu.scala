@@ -2,7 +2,7 @@ package com.goticks
 
 import akka.actor.Actor
 
-class Ress extends Actor {
+class Resu extends Actor {
   import TicketProtocol._
   import spray.json._
 
