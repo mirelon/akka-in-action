@@ -35,7 +35,6 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
 class Responder(requestContext:RequestContext, ticketMaster:ActorRef) extends Actor with ActorLogging {
   import TicketProtocol._
-  import spray.httpx.SprayJsonSupport._
 
   def receive = {
 
