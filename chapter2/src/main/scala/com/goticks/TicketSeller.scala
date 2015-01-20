@@ -4,12 +4,16 @@ import akka.actor.{PoisonPill, Actor}
 
 class TicketSeller extends Actor {
   import TicketProtocol._
+  import spray.json._
 
   var tickets = Vector[Ticket]()
 
   def receive = {
 
-    case GetEvents => sender ! tickets.size
+    case GetEvents => {
+      println(Event(event = "E", nrOfTickets = 10).toJson)
+      sender ! tickets.size
+    }
 
     case Tickets(newTickets) => tickets = tickets ++ newTickets
 
