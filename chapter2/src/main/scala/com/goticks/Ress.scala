@@ -14,19 +14,6 @@ class Ress extends Actor {
       println(Event(event = "E", nrOfTickets = 10).toJson)
       sender ! tickets.size
     }
-
-    case Tickets(newTickets) => tickets = tickets ++ newTickets
-
-    case BuyTicket =>
-      if (tickets.isEmpty) {
-        sender ! SoldOut
-        self ! PoisonPill
-      }
-
-      tickets.headOption.foreach { ticket =>
-        tickets = tickets.tail
-        sender ! ticket
-      }
   }
 }
 
