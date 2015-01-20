@@ -39,14 +39,6 @@ class Responder(requestContext:RequestContext, ticketMaster:ActorRef) extends Ac
 
   def receive = {
 
-    case ticket:Ticket =>
-      requestContext.complete(StatusCodes.OK, ticket)
-      self ! PoisonPill
-
-    case EventCreated =>
-      requestContext.complete(StatusCodes.OK)
-      self ! PoisonPill
-
     case Events(events) =>
       requestContext.complete(StatusCodes.OK, events)
       self ! PoisonPill
