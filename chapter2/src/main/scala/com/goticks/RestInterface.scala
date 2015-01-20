@@ -18,6 +18,7 @@ class RestInterface extends HttpServiceActor
 trait RestApi extends HttpService with ActorLogging { actor: Actor =>
   import context.dispatcher
   import com.goticks.TicketProtocol._
+  import spray.json._
 
   implicit val timeout = Timeout(10 seconds)
   import akka.pattern.ask
@@ -26,7 +27,7 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
     path("events") {
       get { requestContext =>
-        context.actorOf(Props[TicketSeller]).ask(GetEvents)
+        println(Event(event = "E", nrOfTickets = 10).toJson)
       }
     }
 
