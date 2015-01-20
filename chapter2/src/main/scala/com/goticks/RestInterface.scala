@@ -33,14 +33,13 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
 }
 
-class Responder(requestContext:RequestContext, ticketMaster:ActorRef) extends Actor with ActorLogging {
+class Responder(requestContext:RequestContext) extends Actor with ActorLogging {
   import TicketProtocol._
 
   def receive = {
 
     case Events(events) =>
       requestContext.complete(StatusCodes.OK, events)
-      self ! PoisonPill
 
   }
 }
