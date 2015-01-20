@@ -27,7 +27,7 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
     path("events") {
       get { requestContext =>
-        context.actorOf(Props[Resu]).ask(GetEvents)
+        context.actorOf(Props[Ress]).ask(GetEvents)
       }
     }
 
