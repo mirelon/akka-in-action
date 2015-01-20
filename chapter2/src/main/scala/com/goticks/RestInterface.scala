@@ -47,10 +47,6 @@ class Responder(requestContext:RequestContext, ticketMaster:ActorRef) extends Ac
       requestContext.complete(StatusCodes.OK)
       self ! PoisonPill
 
-    case SoldOut =>
-      requestContext.complete(StatusCodes.NotFound)
-      self ! PoisonPill
-
     case Events(events) =>
       requestContext.complete(StatusCodes.OK, events)
       self ! PoisonPill
