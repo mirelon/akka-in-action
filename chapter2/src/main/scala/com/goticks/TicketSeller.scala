@@ -15,18 +15,6 @@ class TicketSeller extends Actor {
       sender ! tickets.size
     }
 
-    case Tickets(newTickets) => tickets = tickets ++ newTickets
-
-    case BuyTicket =>
-      if (tickets.isEmpty) {
-        sender ! SoldOut
-        self ! PoisonPill
-      }
-
-      tickets.headOption.foreach { ticket =>
-        tickets = tickets.tail
-        sender ! ticket
-      }
   }
 }
 
