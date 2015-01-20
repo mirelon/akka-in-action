@@ -38,8 +38,8 @@ class Responder(requestContext:RequestContext) extends Actor with ActorLogging {
 
   def receive = {
 
-    case Events(events) =>
-      requestContext.complete(StatusCodes.OK, events)
+    case Event(event:String, nrOfTickets:Int) =>
+      requestContext.complete(StatusCodes.OK, event)
 
   }
 }
