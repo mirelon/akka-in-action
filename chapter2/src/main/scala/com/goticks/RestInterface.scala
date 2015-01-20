@@ -15,13 +15,12 @@ class RestInterface extends HttpServiceActor
   def receive = runRoute(routes)
 }
 
-trait RestApi extends HttpService with ActorLogging { actor: Actor =>
+trait RestApi extends HttpService { actor: Actor =>
   import context.dispatcher
   import com.goticks.TicketProtocol._
 
   implicit val timeout = Timeout(10 seconds)
   import akka.pattern.ask
-  import akka.pattern.pipe
 
   def routes: Route =
 
@@ -33,9 +32,8 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
 }
 
-class Responder(requestContext:RequestContext, ticketMaster:ActorRef) extends Actor with ActorLogging {
+class Responder(requestContext:RequestContext) extends Actor {
   import TicketProtocol._
-  import spray.httpx.SprayJsonSupport._
 
   def receive = {
 
