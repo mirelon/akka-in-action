@@ -2,7 +2,7 @@ package com.goticks
 
 import akka.actor.{PoisonPill, Actor}
 
-class TicketSeller extends Actor {
+class Resu extends Actor {
   import TicketProtocol._
   import spray.json._
 
