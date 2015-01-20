@@ -3,9 +3,6 @@ package com.goticks
 import akka.actor._
 
 import spray.routing._
-import spray.http.StatusCodes
-import spray.httpx.SprayJsonSupport._
-import spray.routing.RequestContext
 import akka.util.Timeout
 import scala.concurrent.duration._
 import scala.language.postfixOps
@@ -21,7 +18,6 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
   import spray.json._
 
   implicit val timeout = Timeout(10 seconds)
-  import akka.pattern.ask
 
   def routes: Route =
 
