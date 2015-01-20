@@ -1,6 +1,6 @@
 package com.goticks
 
-import akka.actor.{PoisonPill, Actor}
+import akka.actor.Actor
 
 class TicketSeller extends Actor {
   import TicketProtocol._

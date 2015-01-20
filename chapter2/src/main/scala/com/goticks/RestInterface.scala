@@ -21,7 +21,6 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
 
   implicit val timeout = Timeout(10 seconds)
   import akka.pattern.ask
-  import akka.pattern.pipe
 
   def routes: Route =
 
